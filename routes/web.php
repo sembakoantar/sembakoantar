@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BerandaController;
 
+//use App\Http\Controllers;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,13 +16,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
+Route::get('/home', [BerandaController::class, 'index']);
+Route::get('/shopdetail', [BerandaController::class, 'detail']);
+Route::get('/shopcategory', [BerandaController::class, 'category']);
+
+//Route::get('category', 'App/Http/Controllers/BerandaController@index');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::prefix('admin')->group(function(){
+    Route::get('dashboard',[App\Http\Controllers\HomeController::class, 'index']);
+});
