@@ -16,7 +16,7 @@ use App\Http\Controllers\BerandaController;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('auth.login');
 });
 
 Route::get('/home', [BerandaController::class, 'index']);
@@ -25,7 +25,6 @@ Route::get('/shopcategory', [BerandaController::class, 'category']);
 
 //Route::get('category', 'App/Http/Controllers/BerandaController@index');
 Auth::routes();
-
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('admin')->group(function(){
