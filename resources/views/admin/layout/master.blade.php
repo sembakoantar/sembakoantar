@@ -254,6 +254,8 @@
     <!-- Main content -->
     @yield('body')
     <!-- /.content -->
+
+    @yield('footer')
   </div>
   <!-- /.content-wrapper -->
 
