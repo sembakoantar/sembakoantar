@@ -22,10 +22,19 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach
+                        @php
+                            $no = 1;
+                        @endphp
+                        @foreach($category as $c)
                             <tr>
                                 <td>
-                                    
+                                    {{$no++}}
+                                </td>
+                                <td>
+                                    {{$c->name}}
+                                </td>
+                                <td>
+                                    {{$c->name}}
                                 </td>
                             </tr>
                         @endforeach
