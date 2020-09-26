@@ -8,7 +8,7 @@ class BerandaController extends Controller
 {
     public function index(){
     	// $products = Product::all();
-    	return view('welcome');
+    	return view('halamanawal');
     	//echo "aus";
     }
 
@@ -20,6 +20,16 @@ class BerandaController extends Controller
     public function category()
     {
     	return view('shopcategory');
+    }
+
+    public function template()
+    {
+        return view('template');
+    }
+
+    public function cobacontent()
+    {
+        return view('cobacontent');
     }
 
 }

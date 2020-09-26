@@ -19,9 +19,12 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+//Route Web e gak admin
 Route::get('/home', [BerandaController::class, 'index']);
 Route::get('/shopdetail', [BerandaController::class, 'detail']);
 Route::get('/shopcategory', [BerandaController::class, 'category']);
+Route::get('/template', [BerandaController::class, 'template']);
+Route::get('/cobacontent', [BerandaController::class, 'cobacontent']);
 
 //Route::get('category', 'App/Http/Controllers/BerandaController@index');
 Auth::routes();
