@@ -20,12 +20,20 @@ class TableProducts extends Migration
             $table->string('description');
             $table->integer('stock');
             $table->integer('price');
+            $table->integer('price_box');
+            $table->string('brand');
             $table->foreignId('category_id')->nullable();
             $table->foreign('category_id')
                 ->on('categories')
                 ->references('id')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->foreignId('sub_category_id')->nullable();
+            $table->foreign('sub_category_id')
+                    ->on('sub_category')
+                    ->references('id')
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
             $table->foreignId('user_id')->nullable();
             $table->foreign('user_id')
                     ->on('users')

@@ -17,20 +17,24 @@
                         <thead>
                         <tr>
                             <th>No</th>
-                            <th>Category</th>
                             <th>Sub Category</th>
-                            <th>Slug</th>
+                            <th>Category</th>
                         </tr>
                         </thead>
                         <tbody>
-                        
+                        @foreach
+                            <tr>
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
                         <tfoot>
                         <tr>
                             <th>No</th>
-                            <th>Category</th>
                             <th>Sub Category</th>
-                            <th>Slug</th>
+                            <th>Category</th>
                         </tr>
                         </tfoot>
                         </table>
