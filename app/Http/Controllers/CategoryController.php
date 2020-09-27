@@ -10,7 +10,7 @@ class CategoryController extends Controller
 {
     public function index(){
         $category=Category::all();
-        $sub_category=sub_category::where('parent');
-        return view('admin.category.index',compact('category'));
+        $sub_category=sub_category::all();
+        return view('admin.category.index',compact('sub_category','category'));
     }
 }

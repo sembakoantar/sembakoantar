@@ -10,9 +10,8 @@ class sub_category extends Model
     use HasFactory;
     protected $table = 'sub_category';
 
-    function Parent()
+    function parent()
     {
-
         return $this->belongsTo('App\Models\Category','category_id','id');//Many to One
     }
 }
