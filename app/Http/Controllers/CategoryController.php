@@ -13,4 +13,9 @@ class CategoryController extends Controller
         $sub_category=sub_category::all();
         return view('admin.category.index',compact('sub_category','category'));
     }
+
+    public function post(Request $request){
+        //return $request->all();
+        
+    }
 }

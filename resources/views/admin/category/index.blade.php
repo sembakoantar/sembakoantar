@@ -19,11 +19,13 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form role="form">
+                    
+                    <form role="form" action="{{ route('admin.category') }}" method="POST">
+                        @csrf
                         <div class="card-body">
                         <div class="form-group">
                             <label>Sub Category</label>
-                            <input type="text" class="form-control" >
+                            <input type="text" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Category</label>
@@ -123,7 +125,7 @@
         <script>
             //Initialize Select2 Elements
             $('.select2').select2({
-            theme: 'bootstrap4'
+                theme: 'bootstrap4'
             })
 
             function dis_category(){
@@ -133,6 +135,7 @@
                 }
                 else{
                     document.getElementById("add_category").disabled = true;
+                    document.getElementById("add_category").value = "";
                 }
             }
             
