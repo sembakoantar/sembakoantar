@@ -15,7 +15,24 @@ class CategoryController extends Controller
     }
 
     public function post(Request $request){
-        //return $request->all();
-        
+        $category = new Category;
+        $sub_category = new sub_category;
+        $sub_category->name = $request->sub_category;
+
+        //tambah kategori baru
+        if($request->category == "")
+        {
+            $category->name = $request->add_category;
+            $category->type = $request->type;
+            $category->save();
+            $get_category_id = Category::orderBy('id', 'desc')->get();
+            $sub_category->category_id = $get_category_id[0]['id'];
+            $sub_category->save();
+        }
+        else{
+            $sub_category->category_id = $request->category;
+            $sub_category->save();
+        }
+        return redirect()->back();
     }
 }

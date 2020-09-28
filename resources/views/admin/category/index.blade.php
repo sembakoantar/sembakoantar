@@ -9,6 +9,7 @@
 
     @endsection
     @section('body')
+    <br>
     <section class="content">
         <div class="container-fluid">
             <div class="row">
@@ -25,25 +26,29 @@
                         <div class="card-body">
                         <div class="form-group">
                             <label>Sub Category</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="sub_category">
                         </div>
                         <div class="form-group">
                             <label>Category</label>
-                            <select class="form-control select2" id="category" onchange="dis_category()">
+                            <select class="form-control select2" id="category" onchange="dis_category()" name="category">
+                                <option value=""></option>
                                 @foreach($category as $c)
-                                    <option value=""></option>
-                                    <option>{{ $c->name}}</option>
+                                    <option value="{{ $c->id }}">{{ $c->name}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Add Category if doesnt exist</label>
-                            <input type="text" class="form-control" id="add_category" placeholder="Enter Category">
+                            <input type="text" class="form-control" id="add_category" placeholder="Enter Category" name="add_category">
                         </div>
-                        <!-- <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                        </div> -->
+                        <!-- select -->
+                        <div class="form-group">
+                            <label>Type produk</label>
+                            <select class="form-control" name="type" id="type">
+                            <option value="makanan">Makanan</option>
+                            <option value="minuman">Minuman</option>
+                            </select>
+                        </div>
                         </div>
                         <!-- /.card-body -->
 
@@ -67,6 +72,7 @@
                                         <th>No</th>
                                         <th>Sub Category</th>
                                         <th>Category</th>
+                                        <th>Type</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -83,6 +89,9 @@
                                             </td>
                                             <td>
                                                 {{$c->parent->name}}
+                                            </td>
+                                            <td>
+                                                {{$c->parent->type}}
                                             </td>
                                         </tr>
                                     @endforeach
@@ -132,9 +141,11 @@
                 var s_category = document.getElementById("category");
                 if(s_category.options[s_category.selectedIndex].text == ""){
                     document.getElementById("add_category").disabled = false;
+                    document.getElementById("type").disabled = false;
                 }
                 else{
                     document.getElementById("add_category").disabled = true;
+                    document.getElementById("type").disabled = true;
                     document.getElementById("add_category").value = "";
                 }
             }
