@@ -13,56 +13,10 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-5">
-                <div class="card card-primary">
-                    <div class="card-header">
-                        <h3 class="card-title">Add Category</h3>
-                    </div>
-                    <!-- /.card-header -->
-                    <!-- form start -->
-                    
-                    <form role="form" action="{{ url('admin/category') }}" method="POST">
-                        @csrf
-                        <div class="card-body">
-                        <div class="form-group">
-                            <label>Sub Category</label>
-                            <input type="text" class="form-control" name="sub_category">
-                        </div>
-                        <div class="form-group">
-                            <label>Category</label>
-                            <select class="form-control select2" id="category" onchange="dis_category()" name="category">
-                                <option value=""></option>
-                                @foreach($category as $c)
-                                    <option value="{{ $c->id }}">{{ $c->name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Add Category if doesnt exist</label>
-                            <input type="text" class="form-control" id="add_category" placeholder="Enter Category" name="add_category">
-                        </div>
-                        <!-- select -->
-                        <div class="form-group">
-                            <label>Type produk</label>
-                            <select class="form-control" name="type" id="type">
-                            <option value="makanan">Makanan</option>
-                            <option value="minuman">Minuman</option>
-                            </select>
-                        </div>
-                        </div>
-                        <!-- /.card-body -->
-
-                        <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </form>
-                    </div>
-                    <!-- /.card -->
-                </div>
-                <div class="col-md-7">
+                <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Category</h3>
+                            <h3 class="card-title">Product</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -70,29 +24,58 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Sub Category</th>
+                                        <th>Name</th>
+                                        <th>Photo</th>
+                                        <th>Description</th>
+                                        <th>Stock</th>
+                                        <th>Price</th>
+                                        <th>Price Box</th>
+                                        <th>Brand</th>
                                         <th>Category</th>
-                                        <th>Type</th>
+                                        <th>Sub Category</th>
+                                        <th>user</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @php
                                         $no = 1;
                                     @endphp
-                                    @foreach($sub_category as $c)
+                                    @foreach($product as $item)
                                         <tr>
                                             <td>
                                                 {{$no++}}
                                             </td>
                                             <td>
-                                                {{$c->name}}
+                                                {{$item->name}}
                                             </td>
                                             <td>
-                                                {{$c->parent->name}}
+                                                <img src="{{ url($item->photo) }}">
                                             </td>
                                             <td>
-                                                {{$c->parent->type}}
+                                                {{$item->description}}
                                             </td>
+                                            <td>
+                                                {{$item->stock}}
+                                            </td>
+                                            <td>
+                                                {{$item->price}}
+                                            </td>
+                                            <td>
+                                                {{$item->price_box}}
+                                            </td>
+                                            <td>
+                                                {{$item->brand}}
+                                            </td>
+                                            <td>
+                                                {{$item->category_id}}
+                                            </td>
+                                            <td>
+                                                {{$item->sub_category_id}}
+                                            </td>
+                                            <td>
+                                                {{$item->user_id}}
+                                            </td>
+                                            
                                         </tr>
                                     @endforeach
                                 </tbody>
