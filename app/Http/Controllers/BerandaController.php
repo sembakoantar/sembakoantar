@@ -8,7 +8,7 @@ class BerandaController extends Controller
 {
     public function index(){
     	// $products = Product::all();
-    	return view('halamanawal');
+    	return view('homepage');
     	//echo "aus";
     }
 
