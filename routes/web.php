@@ -31,6 +31,7 @@ Auth::routes();
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('admin')->group(function(){
-    Route::get('dashboard',[App\Http\Controllers\HomeController::class, 'index']);
+    Route::get('dashboard',[App\Http\Controllers\HomeController::class, 'index'])->name('admin.dashboard');
     Route::get('category',[App\Http\Controllers\CategoryController::class, 'index']);
+    Route::post('category',[App\Http\Controllers\CategoryController::class, 'post'])->name('admin.category');
 });
