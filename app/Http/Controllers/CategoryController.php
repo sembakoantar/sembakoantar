@@ -35,4 +35,10 @@ class CategoryController extends Controller
         }
         return redirect()->back();
     }
+
+    public function edit(Request $request,$id){
+        $sub_category=sub_category::find($id);
+        $category=category::all();
+        return view('admin.category.edit',compact('sub_category','category'));
+    }
 }

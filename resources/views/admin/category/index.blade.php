@@ -21,7 +21,7 @@
                     <!-- /.card-header -->
                     <!-- form start -->
                     
-                    <form role="form" action="{{ route('admin.category') }}" method="POST">
+                    <form role="form" action="{{ url('admin/category') }}" method="POST">
                         @csrf
                         <div class="card-body">
                         <div class="form-group">
@@ -31,7 +31,7 @@
                         <div class="form-group">
                             <label>Category</label>
                             <select class="form-control select2" id="category" onchange="dis_category()" name="category">
-                                <option value=""></option>
+                                <option value="">(New Category)</option>
                                 @foreach($category as $c)
                                     <option value="{{ $c->id }}">{{ $c->name}}</option>
                                 @endforeach
@@ -73,6 +73,7 @@
                                         <th>Sub Category</th>
                                         <th>Category</th>
                                         <th>Type</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -92,6 +93,9 @@
                                             </td>
                                             <td>
                                                 {{$c->parent->type}}
+                                            </td>
+                                            <td>
+                                                <a href="{{url('admin/category/'.$c->id.'/edit') }}">Edit</a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -139,7 +143,7 @@
 
             function dis_category(){
                 var s_category = document.getElementById("category");
-                if(s_category.options[s_category.selectedIndex].text == ""){
+                if(s_category.options[s_category.selectedIndex].value == ""){
                     document.getElementById("add_category").disabled = false;
                     document.getElementById("type").disabled = false;
                 }
