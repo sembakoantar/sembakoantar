@@ -49,7 +49,7 @@
                                                 {{$item->name}}
                                             </td>
                                             <td>
-                                                <img src="{{ url($item->photo) }}">
+                                                <img src="../../img/{{ $item->photo }}" width="25px" height="25px">
                                             </td>
                                             <td>
                                                 {{$item->description}}
