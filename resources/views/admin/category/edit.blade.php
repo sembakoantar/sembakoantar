@@ -16,7 +16,7 @@
                 <div class="col-md-12">
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Add Category</h3>
+                        <h3 class="card-title">Edit Category</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
@@ -33,7 +33,14 @@
                             <select class="form-control select2" id="category" name="category">
                                 <option value="">(New Category)</option>
                                 @foreach($category as $c)
-                                    <option value="{{ $c->id }}">{{ $c->name}}</option>
+                                    <?php
+                                        if($sub_category->category_id == $c->id){?>
+                                            <option value="{{ $c->id }}" selected="selected">{{ $c->name}}</option>
+                                        <?php }
+                                        else{?>
+                                            <option value="{{ $c->id }}">{{ $c->name}}</option>
+                                        <?php }
+                                    ?> 
                                 @endforeach
                             </select>
                         </div>
@@ -41,8 +48,16 @@
                         <div class="form-group">
                             <label>Type produk</label>
                             <select class="form-control" name="type" id="type">
-                            <option value="makanan">Makanan</option>
-                            <option value="minuman">Minuman</option>
+                            <?php
+                                if($c->type == "makanan"){?>
+                                    <option value="makanan" selected="selected">Makanan</option>
+                                    <option value="minuman">Minuman</option>
+                                <?php }
+                                else{?>
+                                    <option value="makanan">Makanan</option>
+                                    <option value="minuman" selected="selected">Minuman</option>
+                                <?php }
+                            ?>
                             </select>
                         </div>
                         </div>
