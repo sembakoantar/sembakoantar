@@ -21,7 +21,7 @@
                     <!-- /.card-header -->
                     <!-- form start -->
                     
-                    <form role="form" action="{{ url('admin/category') }}" method="POST">
+                    <form role="form" action="{{ route('category.store') }}" method="POST">
                         @csrf
                         <div class="card-body">
                         <div class="form-group">
@@ -95,7 +95,7 @@
                                                 {{$c->parent->type}}
                                             </td>
                                             <td>
-                                                <a href="{{url('admin/category/'.$c->id.'/edit') }}">Edit</a>
+                                                <a href="{{ route('category.edit',$c->id) }}">Edit</a>
                                             </td>
                                         </tr>
                                     @endforeach

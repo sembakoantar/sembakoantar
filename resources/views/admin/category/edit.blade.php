@@ -21,8 +21,9 @@
                     <!-- /.card-header -->
                     <!-- form start -->
                     
-                    <form role="form" action="{{ url('admin/category') }}" method="POST">
+                    <form role="form" action="{{ route('category.update',$sub_category->id) }}" method="POST">
                         @csrf
+                        {{method_field('PUT')}}
                         <div class="card-body">
                         <div class="form-group">
                             <label>Sub Category</label>
@@ -30,8 +31,7 @@
                         </div>
                         <div class="form-group">
                             <label>Category</label>
-                            <select class="form-control select2" id="category" name="category">
-                                <option value="">(New Category)</option>
+                            <select class="form-control select2" id="category" name="category_id">
                                 @foreach($category as $c)
                                     <?php
                                         if($sub_category->category_id == $c->id){?>
@@ -44,7 +44,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        
+
                         <div class="form-group">
                             <label>Type produk</label>
                             <select class="form-control" name="type" id="type">
