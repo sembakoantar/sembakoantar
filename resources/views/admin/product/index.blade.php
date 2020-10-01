@@ -33,7 +33,6 @@
                                         <th>Brand</th>
                                         <th>Category</th>
                                         <th>Sub Category</th>
-                                        <th>user</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -67,13 +66,10 @@
                                                 {{$item->brand}}
                                             </td>
                                             <td>
-                                                {{$item->category_id}}
+                                                {{$item->parent->name}}
                                             </td>
                                             <td>
-                                                {{$item->sub_category_id}}
-                                            </td>
-                                            <td>
-                                                {{$item->user_id}}
+                                                {{$item->parent2sub->name}}
                                             </td>
                                             
                                         </tr>

@@ -16,39 +16,79 @@
                 <div class="col-md-12">
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Add Category</h3>
+                        <h3 class="card-title">Add product</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
                     
-                    <form role="form" action="{{ url('admin/category') }}" method="POST">
+                    <form role="form" action="{{ route('product.store') }}" method="POST">
                         @csrf
                         <div class="card-body">
                         <div class="form-group">
-                            <label>Sub Category</label>
-                            <input type="text" class="form-control" name="sub_category">
+                            <label>Name</label>
+                            <input type="text" class="form-control" name="name">
                         </div>
                         <div class="form-group">
-                            <label>Category</label>
-                            <select class="form-control select2" id="category" onchange="dis_category()" name="category">
+                            <label>Photo</label>
+                            <input type="text" class="form-control" name="photo">
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <input type="text" class="form-control" name="description">
+                        </div>
+                        <div class="form-group">
+                            <label>Stock</label>
+                            <input type="text" class="form-control" name="stock">
+                        </div>
+                        <div class="form-group">
+                            <label>Price</label>
+                            <input type="text" class="form-control" name="prince">
+                        </div>
+                        <div class="form-group">
+                            <label>Price Box</label>
+                            <input type="text" class="form-control" name="price_box">
+                        </div>
+                       <!--  <div class="form-group">
+                            <label>Brand</label>
+                            <select class="form-control select2" id="brand" onchange="dis_category()" name="brand">
                                 <option value=""></option>
-                                @foreach($category as $c)
-                                    <option value="{{ $c->id }}">{{ $c->name}}</option>
+                                @foreach($product as $p)
+                                    <option value="{{ $p->id }}">{{ $p->brand}}</option>
+                                @endforeach
+                            </select>
+                        </div> -->
+                        <div class="form-group">
+                            <label>Sub Category</label>
+                            <select class="form-control select2" id="subcategory" onchange="dis_category()" name="sub_category_id">
+                                <option value=""></option>
+                                @foreach($sub_category as $p)
+                                    <option value="{{ $p->id }}">{{ $p->name}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Add Category if doesnt exist</label>
-                            <input type="text" class="form-control" id="add_category" placeholder="Enter Category" name="add_category">
-                        </div>
-                        <!-- select -->
-                        <div class="form-group">
-                            <label>Type produk</label>
-                            <select class="form-control" name="type" id="type">
-                            <option value="makanan">Makanan</option>
-                            <option value="minuman">Minuman</option>
+                            <label>Category</label>
+                            <select class="form-control select2" id="category" onchange="dis_category()" name="category_id">
+                                <option value=""></option>
+                                @foreach($category as $p)
+                                    <option value="{{ $p->id }}">{{ $p->name}}</option>
+                                @endforeach
                             </select>
                         </div>
+                        <!-- <div class="form-group">
+                            <label>User</label>
+                            <select class="form-control select2" id="user" onchange="dis_category()" name="user_id">
+                                <option value=""></option>
+                                @foreach($product as $p)
+                                    <option value="{{ $p->id }}">{{ $p->user_id}}</option>
+                                @endforeach
+                            </select>
+                        </div> -->
+                       <!--  <div class="form-group">
+                            <label>Add Brand if doesnt exist</label>
+                            <input type="text" class="form-control" id="add_brand" placeholder="Enter Category" name="brand">
+                        </div> -->
+                        <!-- select -->
                         </div>
                         <!-- /.card-body -->
 

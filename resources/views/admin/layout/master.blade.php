@@ -226,13 +226,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('admin/product') }}" class="nav-link">
+                <a href="{{ route('product.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>List product</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../index2.html" class="nav-link">
+                <a href="{{ route('product.create') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>add product</p>
                 </a>

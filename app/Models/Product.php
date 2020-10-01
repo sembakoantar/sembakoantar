@@ -14,4 +14,14 @@ class Product extends Model
 
     //     return $this->hasMany('App\Models\Product','id');//One to Many
     // }
+    protected $table = 'products';
+
+    function parent()
+    {
+        return $this->belongsTo('App\Models\Category','category_id','id');//Many to One
+    }
+    function parent2sub()
+    {
+        return $this->belongsTo('App\Models\sub_category','sub_category_id','id');//Many to One
+    }
 }
