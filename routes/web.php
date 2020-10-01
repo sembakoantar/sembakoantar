@@ -19,9 +19,12 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+//Route Web e gak admin
 Route::get('/home', [BerandaController::class, 'index']);
 Route::get('/shopdetail', [BerandaController::class, 'detail']);
 Route::get('/shopcategory', [BerandaController::class, 'category']);
+Route::get('/template', [BerandaController::class, 'template']);
+Route::get('/cobacontent', [BerandaController::class, 'cobacontent']);
 
 //Route::get('category', 'App/Http/Controllers/BerandaController@index');
 Auth::routes();
@@ -30,5 +33,5 @@ Auth::routes();
 Route::prefix('admin')->group(function(){
     Route::get('dashboard',[App\Http\Controllers\HomeController::class, 'index'])->name('admin.dashboard');
     Route::resource('category',App\Http\Controllers\CategoryController::class);
-    //Route::post('category',[App\Http\Controllers\CategoryController::class, 'post'])->name('admin.category');
+    Route::resource('product',App\Http\Controllers\ProductController::class);
 });
