@@ -13,42 +13,82 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-5">
+                <div class="col-md-12">
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Add Category</h3>
+                        <h3 class="card-title">Add product</h3>
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
                     
-                    <form role="form" action="{{ route('category.store') }}" method="POST">
+                    <form role="form" action="{{ route('product.store') }}" method="POST">
                         @csrf
                         <div class="card-body">
                         <div class="form-group">
-                            <label>Sub Category</label>
-                            <input type="text" class="form-control" name="sub_category">
+                            <label>Name</label>
+                            <input type="text" class="form-control" name="name">
                         </div>
                         <div class="form-group">
-                            <label>Category</label>
-                            <select class="form-control select2" id="category" onchange="dis_category()" name="category">
-                                <option value="">(New Category)</option>
-                                @foreach($category as $c)
-                                    <option value="{{ $c->id }}">{{ $c->name}}</option>
+                            <label>Photo</label>
+                            <input type="text" class="form-control" name="photo">
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <input type="text" class="form-control" name="description">
+                        </div>
+                        <div class="form-group">
+                            <label>Stock</label>
+                            <input type="text" class="form-control" name="stock">
+                        </div>
+                        <div class="form-group">
+                            <label>Price</label>
+                            <input type="text" class="form-control" name="prince">
+                        </div>
+                        <div class="form-group">
+                            <label>Price Box</label>
+                            <input type="text" class="form-control" name="price_box">
+                        </div>
+                       <!--  <div class="form-group">
+                            <label>Brand</label>
+                            <select class="form-control select2" id="brand" onchange="dis_category()" name="brand">
+                                <option value=""></option>
+                                @foreach($product as $p)
+                                    <option value="{{ $p->id }}">{{ $p->brand}}</option>
+                                @endforeach
+                            </select>
+                        </div> -->
+                        <div class="form-group">
+                            <label>Sub Category</label>
+                            <select class="form-control select2" id="subcategory" onchange="dis_category()" name="sub_category_id">
+                                <option value=""></option>
+                                @foreach($sub_category as $p)
+                                    <option value="{{ $p->id }}">{{ $p->name}}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Add Category if doesnt exist</label>
-                            <input type="text" class="form-control" id="add_category" placeholder="Enter Category" name="add_category">
-                        </div>
-                        <!-- select -->
-                        <div class="form-group">
-                            <label>Type produk</label>
-                            <select class="form-control" name="type" id="type">
-                            <option value="makanan">Makanan</option>
-                            <option value="minuman">Minuman</option>
+                            <label>Category</label>
+                            <select class="form-control select2" id="category" onchange="dis_category()" name="category_id">
+                                <option value=""></option>
+                                @foreach($category as $p)
+                                    <option value="{{ $p->id }}">{{ $p->name}}</option>
+                                @endforeach
                             </select>
                         </div>
+                        <!-- <div class="form-group">
+                            <label>User</label>
+                            <select class="form-control select2" id="user" onchange="dis_category()" name="user_id">
+                                <option value=""></option>
+                                @foreach($product as $p)
+                                    <option value="{{ $p->id }}">{{ $p->user_id}}</option>
+                                @endforeach
+                            </select>
+                        </div> -->
+                       <!--  <div class="form-group">
+                            <label>Add Brand if doesnt exist</label>
+                            <input type="text" class="form-control" id="add_brand" placeholder="Enter Category" name="brand">
+                        </div> -->
+                        <!-- select -->
                         </div>
                         <!-- /.card-body -->
 
@@ -58,53 +98,6 @@
                     </form>
                     </div>
                     <!-- /.card -->
-                </div>
-                <div class="col-md-7">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Category</h3>
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            <table id="example1" class="table table-bordered table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Sub Category</th>
-                                        <th>Category</th>
-                                        <th>Type</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @php
-                                        $no = 1;
-                                    @endphp
-                                    @foreach($sub_category as $c)
-                                        <tr>
-                                            <td>
-                                                {{$no++}}
-                                            </td>
-                                            <td>
-                                                {{$c->name}}
-                                            </td>
-                                            <td>
-                                                {{$c->parent->name}}
-                                            </td>
-                                            <td>
-                                                {{$c->parent->type}}
-                                            </td>
-                                            <td>
-                                                <a href="{{ route('category.edit',$c->id) }}">Edit</a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                        <!-- /.card -->
                 </div>
             </div>
             
@@ -143,7 +136,7 @@
 
             function dis_category(){
                 var s_category = document.getElementById("category");
-                if(s_category.options[s_category.selectedIndex].value == ""){
+                if(s_category.options[s_category.selectedIndex].text == ""){
                     document.getElementById("add_category").disabled = false;
                     document.getElementById("type").disabled = false;
                 }

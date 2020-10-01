@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class TableProducts extends Migration
+class TableSubCategory extends Migration
 {
     /**
      * Run the migrations.
@@ -13,27 +13,15 @@ class TableProducts extends Migration
      */
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('sub_category', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('photo');
-            $table->string('description');
-            $table->integer('stock');
-            $table->integer('price');
-            $table->integer('price_box');
-            $table->string('brand');
             $table->foreignId('category_id')->nullable();
             $table->foreign('category_id')
                 ->on('categories')
                 ->references('id')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->foreignId('sub_category_id')->nullable();
-            $table->foreign('sub_category_id')
-                    ->on('sub_category')
-                    ->references('id')
-                    ->onUpdate('cascade')
-                    ->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -45,6 +33,6 @@ class TableProducts extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('sub_category');
     }
 }
