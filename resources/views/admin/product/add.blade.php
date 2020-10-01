@@ -62,26 +62,30 @@
                                 @endforeach
                             </select>
                         </div>
+
                         <div class="form-group">
                             <label>Add Brand if doesnt exist</label>
                             <input type="text" class="form-control" id="new_brand" placeholder="Enter New Brand" name="add_brand">
                         </div>
-                        <div class="form-group">
-                            <label>Sub Category</label>
-                            <select class="form-control select2" id="subcategory" onchange="dis_category()" name="sub_category_id">
-                                @foreach($sub_category as $p)
-                                    <option value="{{ $p->id }}">{{ $p->name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
+
                         <div class="form-group">
                             <label>Category</label>
-                            <select class="form-control select2" id="category" onchange="dis_category()" name="category_id">
+                            <select class="form-control select2" id="category" name="category_id">
                                 @foreach($category as $p)
                                     <option value="{{ $p->id }}">{{ $p->name}}</option>
                                 @endforeach
                             </select>
                         </div>
+
+                        <div class="form-group">
+                            <label>Sub Category</label>
+                            <select class="form-control select2" id="subcategory" name="sub_category_id">
+                                @foreach($sub_category as $s)
+                                    <option value="{{ $s->id }}">{{ $s->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        
                         
                         <!-- select -->
                         </div>
@@ -139,6 +143,7 @@
                     document.getElementById("new_brand").value = "";
                 }
             }
+
             
             $('#example1').DataTable({
                 "paging": true,
