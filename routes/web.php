@@ -33,6 +33,5 @@ Auth::routes();
 Route::prefix('admin')->group(function(){
     Route::get('dashboard',[App\Http\Controllers\HomeController::class, 'index'])->name('admin.dashboard');
     Route::resource('category',App\Http\Controllers\CategoryController::class);
-    // Route::post('category',[App\Http\Controllers\CategoryController::class, 'post'])->name('admin.category');
     Route::resource('product',App\Http\Controllers\ProductController::class);
 });
