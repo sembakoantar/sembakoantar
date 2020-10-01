@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\sub_category;
+use App\Models\Brand;
 
 class ProductController extends Controller
 {
@@ -30,9 +31,10 @@ class ProductController extends Controller
      */
     public function create()
     {
+        $brand=Brand::all();
         $category=Category::all();
         $sub_category=sub_category::all();
-        return view('admin.product.add');
+        return view('admin.product.add',compact('brand','category','sub_category'));
     }
 
     /**
@@ -44,26 +46,31 @@ class ProductController extends Controller
     
     public function store(Request $request)
     {
-        // $product = new Product;
-        $category = new Category;
-        $sub_category = new sub_category;
-        $sub_category->name = $request->sub_category;
-        $category->name = $request->Category;
-
-        //tambah kategori baru
-        if($request->product == "")
+        $product = new Product;
+        $brand = new Brand;
+        $product->name = $request->name;
+        // $product->photo = $request->photo;
+        $product->description = $request->description;
+        $product->stock = $request->stock;
+        $product->price = $request->price;
+        $product->price_box = $request->price_box;
+        if($request->brand == "")
         {
-            $category->name = $request->add_category;
-            $category->type = $request->type;
-            $category->save();
-            $get_category_id = Category::orderBy('id', 'desc')->get();
-            $sub_category->category_id = $get_category_id[0]['id'];
-            $sub_category->save();
+            $brand->name = $request->add_brand;
+            $brand->save();
         }
         else{
-            $sub_category->category_id = $request->category;
-            $sub_category->save();
+            $product->brand_id = $request->brand;
         }
+        $product->category_id = $request->category_id;
+        $product->sub_category_id = $request->sub_category_id;
+        $photo = $request->file('photo');
+        $photo_name = $photo->getClientOriginalName();
+        $request->file('photo')->move('img/product',$photo_name);
+        $product->photo = $photo_name;
+        $product->save();
+
+        
         return redirect()->back();
     }
 

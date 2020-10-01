@@ -116,18 +116,7 @@
                 theme: 'bootstrap4'
             })
 
-            function dis_category(){
-                var s_category = document.getElementById("category");
-                if(s_category.options[s_category.selectedIndex].text == ""){
-                    document.getElementById("add_category").disabled = false;
-                    document.getElementById("type").disabled = false;
-                }
-                else{
-                    document.getElementById("add_category").disabled = true;
-                    document.getElementById("type").disabled = true;
-                    document.getElementById("add_category").value = "";
-                }
-            }
+            
             
             $('#example1').DataTable({
                 "paging": true,

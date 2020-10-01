@@ -21,7 +21,7 @@
                     <!-- /.card-header -->
                     <!-- form start -->
                     
-                    <form role="form" action="{{ route('product.store') }}" method="POST">
+                    <form role="form" action="{{ route('product.store') }}" method="POST" enctype="multipart/form_data">
                         @csrf
                         <div class="card-body">
                         <div class="form-group">
@@ -30,7 +30,12 @@
                         </div>
                         <div class="form-group">
                             <label>Photo</label>
-                            <input type="text" class="form-control" name="photo">
+                            <div class="input-group">
+                              <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="exampleInputFile" name="photo">
+                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                              </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>Description</label>
@@ -48,19 +53,22 @@
                             <label>Price Box</label>
                             <input type="text" class="form-control" name="price_box">
                         </div>
-                       <!--  <div class="form-group">
+                        <div class="form-group">
                             <label>Brand</label>
-                            <select class="form-control select2" id="brand" onchange="dis_category()" name="brand">
-                                <option value=""></option>
-                                @foreach($product as $p)
-                                    <option value="{{ $p->id }}">{{ $p->brand}}</option>
+                            <select class="form-control select2" id="brand" onchange="dis_brand()" name="brand">
+                            <option value="">(New Brand)</option>
+                                @foreach($brand as $p)
+                                    <option value="{{ $p->id }}">{{ $p->name}}</option>
                                 @endforeach
                             </select>
-                        </div> -->
+                        </div>
+                        <div class="form-group">
+                            <label>Add Brand if doesnt exist</label>
+                            <input type="text" class="form-control" id="new_brand" placeholder="Enter New Brand" name="add_brand">
+                        </div>
                         <div class="form-group">
                             <label>Sub Category</label>
                             <select class="form-control select2" id="subcategory" onchange="dis_category()" name="sub_category_id">
-                                <option value=""></option>
                                 @foreach($sub_category as $p)
                                     <option value="{{ $p->id }}">{{ $p->name}}</option>
                                 @endforeach
@@ -69,25 +77,12 @@
                         <div class="form-group">
                             <label>Category</label>
                             <select class="form-control select2" id="category" onchange="dis_category()" name="category_id">
-                                <option value=""></option>
                                 @foreach($category as $p)
                                     <option value="{{ $p->id }}">{{ $p->name}}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <!-- <div class="form-group">
-                            <label>User</label>
-                            <select class="form-control select2" id="user" onchange="dis_category()" name="user_id">
-                                <option value=""></option>
-                                @foreach($product as $p)
-                                    <option value="{{ $p->id }}">{{ $p->user_id}}</option>
-                                @endforeach
-                            </select>
-                        </div> -->
-                       <!--  <div class="form-group">
-                            <label>Add Brand if doesnt exist</label>
-                            <input type="text" class="form-control" id="add_brand" placeholder="Enter Category" name="brand">
-                        </div> -->
+                        
                         <!-- select -->
                         </div>
                         <!-- /.card-body -->
@@ -134,16 +129,14 @@
                 theme: 'bootstrap4'
             })
 
-            function dis_category(){
-                var s_category = document.getElementById("category");
-                if(s_category.options[s_category.selectedIndex].text == ""){
-                    document.getElementById("add_category").disabled = false;
-                    document.getElementById("type").disabled = false;
+            function dis_brand(){
+                var d_brand = document.getElementById("brand");
+                if(d_brand.options[d_brand.selectedIndex].value == ""){
+                    document.getElementById("new_brand").disabled = false;
                 }
                 else{
-                    document.getElementById("add_category").disabled = true;
-                    document.getElementById("type").disabled = true;
-                    document.getElementById("add_category").value = "";
+                    document.getElementById("new_brand").disabled = true;
+                    document.getElementById("new_brand").value = "";
                 }
             }
             
