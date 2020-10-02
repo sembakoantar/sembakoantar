@@ -18,10 +18,11 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $brand=Brand::all();
         $product = Product::all();
         $category=Category::all();
         $sub_category=sub_category::all();
-        return view('admin.product.index',compact('product','category','sub_category'));
+        return view('admin.product.index',compact('brand','product','category','sub_category'));
     }
 
     /**

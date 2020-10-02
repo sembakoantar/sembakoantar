@@ -21,7 +21,7 @@
                     <!-- /.card-header -->
                     <!-- form start -->
                     
-                    <form role="form" action="{{ route('product.store') }}" method="POST" enctype="multipart/form_data">
+                    <form role="form" action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="card-body">
                         <div class="form-group">
@@ -31,10 +31,10 @@
                         <div class="form-group">
                             <label>Photo</label>
                             <div class="input-group">
-                              <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="exampleInputFile" name="photo">
-                                <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                              </div>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" name="photo">
+                                    <label class="custom-file-label">Choose file</label>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -47,7 +47,7 @@
                         </div>
                         <div class="form-group">
                             <label>Price</label>
-                            <input type="text" class="form-control" name="prince">
+                            <input type="text" class="form-control" name="price">
                         </div>
                         <div class="form-group">
                             <label>Price Box</label>
@@ -124,10 +124,16 @@
         <script src="../../plugins/select2/js/select2.full.min.js"></script>
         <!-- AdminLTE App -->
         <script src="../../dist/js/adminlte.min.js"></script>
+        <!-- bs-custom-file-input -->
+        <script src="../../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="../../dist/js/demo.js"></script>
         <!-- page script -->
-        <script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                bsCustomFileInput.init();
+            });
+
             //Initialize Select2 Elements
             $('.select2').select2({
                 theme: 'bootstrap4'

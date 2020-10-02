@@ -25,7 +25,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Name</th>
-                                        <th>Photo</th>
+                                        <!-- <th>Photo</th> -->
                                         <th>Description</th>
                                         <th>Stock</th>
                                         <th>Price</th>
@@ -47,9 +47,9 @@
                                             <td>
                                                 {{$item->name}}
                                             </td>
-                                            <td>
-                                                <img src="../../img/{{ $item->photo }}" width="25px" height="25px">
-                                            </td>
+                                            <!-- <td>
+                                                <img src="../../img/product/{{ $item->photo }}" width="40px" height="40px">
+                                            </td> -->
                                             <td>
                                                 {{$item->description}}
                                             </td>
@@ -63,7 +63,7 @@
                                                 {{$item->price_box}}
                                             </td>
                                             <td>
-                                                {{$item->brand}}
+                                                {{$item->parent2brand->name}}
                                             </td>
                                             <td>
                                                 {{$item->parent->name}}
