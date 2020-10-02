@@ -23,7 +23,7 @@
                     
                     <form role="form" action="{{ route('category.update',$sub_category->id) }}" method="POST">
                         @csrf
-                        {{method_field('PUT')}}
+                        {{ @method_field('PUT')}}
                         <div class="card-body">
                         <div class="form-group">
                             <label>Sub Category</label>
