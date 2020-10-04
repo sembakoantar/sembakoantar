@@ -95,11 +95,11 @@
                                                 {{$c->parent->type}}
                                             </td>
                                             <td>   
-                                                <form action="{{ route('category.destroy',$c->id) }}">
-                                                    <a href="{{ route('category.edit',$c->id) }}" class="btn btn-primary">Edit</a>
+                                                <form action="{{ route('category.destroy',$c->id) }}" method="POST">
+                                                    <a href="{{ route('category.edit',$c->id) }}" class="btn btn-primary btn-xs">Edit</a>
                                                     @csrf
                                                     {{ @method_field('DELETE') }}
-                                                    <input type="submit" value="Delete" class="btn btn-danger">
+                                                    <input type="submit" value="Delete" class="btn btn-danger btn-xs">
                                                 </form>
                                             </td>
                                         </tr>

@@ -33,6 +33,7 @@
                                         <th>Brand</th>
                                         <th>Category</th>
                                         <th>Sub Category</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -71,7 +72,14 @@
                                             <td>
                                                 {{$item->parent2sub->name}}
                                             </td>
-                                            
+                                            <td>   
+                                                <form action="" method="POST">
+                                                    <a href="" class="btn btn-primary btn-xs">Edit</a>
+                                                    @csrf
+                                                    {{ @method_field('DELETE') }}
+                                                    <input type="submit" value="Delete" class="btn btn-danger btn-xs">
+                                                </form>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
