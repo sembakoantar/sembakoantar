@@ -50,11 +50,11 @@ class ProductController extends Controller
         $product = new Product;
         $brand = new Brand;
         $product->name = $request->name;
-        // $product->photo = $request->photo;
         $product->description = $request->description;
         $product->stock = $request->stock;
         $product->price = $request->price;
         $product->price_box = $request->price_box;
+        
         if($request->brand == "")
         {
             $brand->name = $request->add_brand;
@@ -63,16 +63,26 @@ class ProductController extends Controller
         else{
             $product->brand_id = $request->brand;
         }
-        $product->category_id = $request->category_id;
-        $product->sub_category_id = $request->sub_category_id;
-        $photo = $request->file('photo');
-        $photo_name = $photo->getClientOriginalName();
-        $request->file('photo')->move('img/product',$photo_name);
-        $product->photo = $photo_name;
-        $product->save();
 
-        
-        return redirect()->back();
+        $sub_category = sub_category::find($request->sub_category_id);
+
+        //jika admin salah input sub dan category
+        if($sub_category->category_id != $request->category_id){
+            alert()->error('SubCategory tidak cocok dengan category', 'Gagal');
+            return redirect()->back();
+        }
+        else{
+            $product->category_id = $request->category_id;
+            $product->sub_category_id = $request->sub_category_id;
+            $photo = $request->file('photo');
+            $photo_name = $photo->getClientOriginalName();
+            $request->file('photo')->move('img/product',$photo_name);
+            $product->photo = $photo_name;
+            $product->save();
+
+            alert()->success(' ', 'Berhasil');
+            return redirect()->back();
+        }
     }
 
     /**

@@ -34,7 +34,7 @@ class CategoryController extends Controller
             $sub_category->category_id = $request->category;
             $sub_category->save();
         }
-        alert()->success('Berhasil di buat', 'Category');
+        alert()->success(' ', 'Berhasil');
         return redirect()->route('category.index');
     }
 
@@ -52,6 +52,7 @@ class CategoryController extends Controller
         $sub_category->category_id = $category->id;
         $category->save();
         $sub_category->save();
+        alert()->success(' ', 'Berhasil');
         return redirect()->route('category.index');
     }
 
@@ -60,7 +61,7 @@ class CategoryController extends Controller
         //$category = Category::find($sub_category->category_id);
         $sub_category->delete();
         //$category->delete();
-        alert()->success('Berhasil di hapus', 'Delete');
+        alert()->success(' ', 'Berhasil');
         return redirect()->route('category.index');
     }
 }
