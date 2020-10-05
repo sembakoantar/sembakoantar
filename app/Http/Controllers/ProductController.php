@@ -104,7 +104,11 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product=Product::find($id);
+        $sub_category=sub_category::all();
+        $category=Category::all();
+        $brand=Brand::all();
+        return view('admin.product.edit',compact('sub_category','category','product','brand'));
     }
 
     /**
@@ -116,7 +120,23 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product=Product::find($id);
+        if($request->photo != NULL)
+        {
+            $product->photo = $request->photo;
+        }
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->stock = $request->stock;
+        $product->price = $request->price;
+        $product->price_box = $request->price_box;
+        $product->brand_id = $request->brand_id;
+        $product->category_id = $request->category_id;
+        $product->sub_category_id = $request->sub_category_id;
+        $product->save();
+        alert()->success(' ', 'Berhasil');
+        return redirect()->route('product.index');
+        
     }
 
     /**
