@@ -15091,3 +15091,27 @@ esources\\views/admin/category/index.blade.php(48): Illuminate\\Foundation\\Boot
 #55 G:\\sembakoantar\\server.php(21): require_once('G:\\\\sembakoantar...')
 #56 {main}
 "} 
+[2020-10-05 09:03:58] local.ERROR: Class 'UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider' not found {"exception":"[object] (Error(code: 0): Class 'UniSharp\\LaravelFilemanager\\LaravelFilemanagerServiceProvider' not found at F:\\Pribadi\\Projek Web\\sembakoantar\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\ProviderRepository.php:208)
+[stacktrace]
+#0 F:\\Pribadi\\Projek Web\\sembakoantar\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\ProviderRepository.php(144): Illuminate\\Foundation\\ProviderRepository->createProvider('UniSharp\\\\Larave...')
+#1 F:\\Pribadi\\Projek Web\\sembakoantar\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\ProviderRepository.php(61): Illuminate\\Foundation\\ProviderRepository->compileManifest(Array)
+#2 F:\\Pribadi\\Projek Web\\sembakoantar\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(604): Illuminate\\Foundation\\ProviderRepository->load(Array)
+#3 F:\\Pribadi\\Projek Web\\sembakoantar\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\RegisterProviders.php(17): Illuminate\\Foundation\\Application->registerConfiguredProviders()
+#4 F:\\Pribadi\\Projek Web\\sembakoantar\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(230): Illuminate\\Foundation\\Bootstrap\\RegisterProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#5 F:\\Pribadi\\Projek Web\\sembakoantar\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(310): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#6 F:\\Pribadi\\Projek Web\\sembakoantar\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#7 F:\\Pribadi\\Projek Web\\sembakoantar\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#8 {main}
+"} 
+[2020-10-05 09:06:34] local.ERROR: Class 'UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider' not found {"exception":"[object] (Error(code: 0): Class 'UniSharp\\LaravelFilemanager\\LaravelFilemanagerServiceProvider' not found at F:\\Pribadi\\Projek Web\\sembakoantar\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\ProviderRepository.php:208)
+[stacktrace]
+#0 F:\\Pribadi\\Projek Web\\sembakoantar\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\ProviderRepository.php(144): Illuminate\\Foundation\\ProviderRepository->createProvider('UniSharp\\\\Larave...')
+#1 F:\\Pribadi\\Projek Web\\sembakoantar\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\ProviderRepository.php(61): Illuminate\\Foundation\\ProviderRepository->compileManifest(Array)
+#2 F:\\Pribadi\\Projek Web\\sembakoantar\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(604): Illuminate\\Foundation\\ProviderRepository->load(Array)
+#3 F:\\Pribadi\\Projek Web\\sembakoantar\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\RegisterProviders.php(17): Illuminate\\Foundation\\Application->registerConfiguredProviders()
+#4 F:\\Pribadi\\Projek Web\\sembakoantar\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(230): Illuminate\\Foundation\\Bootstrap\\RegisterProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#5 F:\\Pribadi\\Projek Web\\sembakoantar\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(310): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#6 F:\\Pribadi\\Projek Web\\sembakoantar\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#7 F:\\Pribadi\\Projek Web\\sembakoantar\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#8 {main}
+"} 

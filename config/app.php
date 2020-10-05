@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
         UxWeb\SweetAlert\SweetAlertServiceProvider::class,
+        
 
         /*
          * Application Service Providers...
