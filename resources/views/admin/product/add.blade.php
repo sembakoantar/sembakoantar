@@ -25,7 +25,7 @@
                         @csrf
                         <div class="card-body">
                         <div class="form-group">
-                            <label>Name</label>
+                            <label>Nama Produk</label>
                             <input type="text" class="form-control" name="name">
                         </div>
                         <div class="form-group">
@@ -39,7 +39,7 @@
                         </div>
                         <div class="form-group">
                             <label>Description</label>
-                            <input type="text" class="form-control" name="description">
+                            <textarea id="my-editor" name="description" class="form-control">{!! old('content', '') !!}</textarea>
                         </div>
                         <div class="form-group">
                             <label>Stock</label>
@@ -128,38 +128,139 @@
         <script src="../../plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="../../dist/js/demo.js"></script>
-        <!-- page script -->
-        <script type="text/javascript">
-            $(document).ready(function () {
-                bsCustomFileInput.init();
-            });
+        <!-- <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script> -->
+        <<!-- script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script> -->
+        <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+        <script>
+        var route_prefix = "/filemanager";
+        </script>
 
-            //Initialize Select2 Elements
-            $('.select2').select2({
-                theme: 'bootstrap4'
-            })
-
-            function dis_brand(){
-                var d_brand = document.getElementById("brand");
-                if(d_brand.options[d_brand.selectedIndex].value == ""){
-                    document.getElementById("new_brand").disabled = false;
-                }
-                else{
-                    document.getElementById("new_brand").disabled = true;
-                    document.getElementById("new_brand").value = "";
-                }
-            }
-
-            
-            $('#example1').DataTable({
-                "paging": true,
-                "lengthChange": true,
-                "searching": true,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
+        <!-- CKEditor init -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.11/ckeditor.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/ckeditor/4.5.11/adapters/jquery.js"></script>
+        <script>
+            $('textarea[name=description').ckeditor({
+            height: 100,
+            filebrowserImageBrowseUrl: route_prefix + '?type=Images',
+            filebrowserImageUploadUrl: route_prefix + '/upload?type=Images&_token={{csrf_token()}}',
+            filebrowserBrowseUrl: route_prefix + '?type=Files',
+            filebrowserUploadUrl: route_prefix + '/upload?type=Files&_token={{csrf_token()}}'
             });
         </script>
+
+        
+
+        <script>
+            {!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/js/stand-alone-button.js')) !!}
+        </script>
+        <script>
+            $('#lfm').filemanager('image', {prefix: route_prefix});
+            $('#lfm').filemanager('file', {prefix: route_prefix});
+        </script>
+
+        <script>
+            
+        </script>
+
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+        <style>
+            .popover {
+            top: auto;
+            left: auto;
+            }
+        </style>
+        <!-- <script>
+            $(document).ready(function(){
+
+            
+
+            });
+        </script> -->
+                <!-- page script -->
+                <script type="text/javascript">
+                    var options = {
+                        filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+                        filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+                        filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+                        filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+                    };
+                    //CKEDITOR.replace('my-editor', options);
+                    var lfm = function(id, type, options) {
+                        let button = document.getElementById(id);
+
+                        button.addEventListener('click', function () {
+                            var route_prefix = (options && options.prefix) ? options.prefix : '/filemanager';
+                            var target_input = document.getElementById(button.getAttribute('data-input'));
+                            var target_preview = document.getElementById(button.getAttribute('data-preview'));
+
+                            window.open(route_prefix + '?type=' + options.type || 'file', 'FileManager', 'width=900,height=600');
+                            window.SetUrl = function (items) {
+                            var file_path = items.map(function (item) {
+                                return item.url;
+                            }).join(',');
+
+                            // set the value of the desired input to image url
+                            target_input.value = file_path;
+                            target_input.dispatchEvent(new Event('change'));
+
+                            // clear previous preview
+                            target_preview.innerHtml = '';
+
+                            // set or change the preview image src
+                            items.forEach(function (item) {
+                                let img = document.createElement('img')
+                                img.setAttribute('style', 'height: 5rem')
+                                img.setAttribute('src', item.thumb_url)
+                                target_preview.appendChild(img);
+                            });
+
+                            // trigger change event
+                            target_preview.dispatchEvent(new Event('change'));
+                            };
+                        });
+                    };
+
+                    lfm('lfm2', 'file', {prefix: route_prefix});
+                    $(document).ready(function () {
+                        bsCustomFileInput.init();
+                        // Define function to open filemanager window
+                        var lfm = function(options, cb) {
+                            var route_prefix = (options && options.prefix) ? options.prefix : '/filemanager';
+                            window.open(route_prefix + '?type=' + options.type || 'file', 'FileManager', 'width=900,height=600');
+                            window.SetUrl = cb;
+                        };
+                    });
+
+                    //Initialize Select2 Elements
+                    $('.select2').select2({
+                        theme: 'bootstrap4'
+                    })
+
+                    function dis_brand(){
+                        var d_brand = document.getElementById("brand");
+                        if(d_brand.options[d_brand.selectedIndex].value == ""){
+                            document.getElementById("new_brand").disabled = false;
+                        }
+                        else{
+                            document.getElementById("new_brand").disabled = true;
+                            document.getElementById("new_brand").value = "";
+                        }
+                    }
+
+                    
+                    $('#example1').DataTable({
+                        "paging": true,
+                        "lengthChange": true,
+                        "searching": true,
+                        "ordering": true,
+                        "info": true,
+                        "autoWidth": false,
+                        "responsive": true,
+                    });
+                </script>
     @endsection
 @show

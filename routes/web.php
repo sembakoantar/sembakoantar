@@ -34,4 +34,5 @@ Route::prefix('admin')->group(function(){
     Route::get('dashboard',[App\Http\Controllers\HomeController::class, 'index'])->name('admin.dashboard');
     Route::resource('category',App\Http\Controllers\CategoryController::class);
     Route::resource('product',App\Http\Controllers\ProductController::class);
+    Route::get('transaction',[App\Http\Controllers\TransactionController::class, 'index'])->name('admin.transaction');
 });
