@@ -16,7 +16,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Product</h3>
+                            <h3 class="card-title">Transaction</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -24,62 +24,31 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
+                                        <th>Code</th>
                                         <th>Name</th>
-                                        <!-- <th>Photo</th> -->
-                                        <th>Description</th>
-                                        <th>Stock</th>
-                                        <th>Price</th>
-                                        <th>Price Box</th>
-                                        <th>Brand</th>
-                                        <th>Category</th>
-                                        <th>Sub Category</th>
-                                        <th>Action</th>
+                                        <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @php
                                         $no = 1;
                                     @endphp
-                                    @foreach($product as $item)
+                                    @foreach($transaction as $item)
                                         <tr>
                                             <td>
                                                 {{$no++}}
                                             </td>
                                             <td>
+                                                {{$item->code}}
+                                            </td>
+                                            <td>
                                                 {{$item->name}}
                                             </td>
-                                            <!-- <td>
-                                                <img src="../../img/product/{{ $item->photo }}" width="40px" height="40px">
-                                            </td> -->
                                             <td>
-                                                {{$item->description}}
+                                                {{$item->payment}}
                                             </td>
-                                            <td>
-                                                {{$item->stock}}
-                                            </td>
-                                            <td>
-                                                {{$item->price}}
-                                            </td>
-                                            <td>
-                                                {{$item->price_box}}
-                                            </td>
-                                            <td>
-                                                {{$item->parent2brand->name}}
-                                            </td>
-                                            <td>
-                                                {{$item->parent->name}}
-                                            </td>
-                                            <td>
-                                                {{$item->parent2sub->name}}
-                                            </td>
-
                                             <td>   
-                                                <form action="{{ route('product.destroy',$item->id) }}" method="POST">
-                                                    <a href="{{ route('product.edit',$item->id) }}" class="btn btn-primary btn-xs">Edit</a>
-                                                    @csrf
-                                                    {{ @method_field('DELETE') }}
-                                                    <input type="submit" value="Delete" class="btn btn-danger btn-xs">
-                                                </form>
+                                                <a href="{{ route('product.edit',$item->id) }}" class="btn btn-primary btn-xs">Edit</a>
                                             </td>
                                         </tr>
                                     @endforeach

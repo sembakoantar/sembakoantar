@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Model\Transaction;
+use App\Models\Transaction;
 
 class TransactionController extends Controller
 {
     public function index(){
-        return view('admin.transaction.index');
+        $transaction = Transaction::groupBy('code')->orderBy('id','DESC')->get();
+        return view('admin.transaction.index',compact('transaction'));
     }
 }
