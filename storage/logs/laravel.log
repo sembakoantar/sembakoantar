@@ -16091,3 +16091,20 @@ esources\\views/admin/category/index.blade.php(48): Illuminate\\Foundation\\Boot
 #52 G:\\sembakoantar\\public\\index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #53 G:\\sembakoantar\\server.php(21): require_once('G:\\\\sembakoantar...')
 #54 {main}"} 
+[2020-10-09 11:34:47] local.ERROR: include(G:\sembakoantar\vendor\composer/../unisharp/laravel-filemanager/src/LaravelFilemanagerServiceProvider.php): failed to open stream: No such file or directory {"exception":"[object] (ErrorException(code: 0): include(G:\\sembakoantar\\vendor\\composer/../unisharp/laravel-filemanager/src/LaravelFilemanagerServiceProvider.php): failed to open stream: No such file or directory at G:\\sembakoantar\\vendor\\composer\\ClassLoader.php:444)
+[stacktrace]
+#0 G:\\sembakoantar\\vendor\\composer\\ClassLoader.php(444): Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'include(G:\\\\semb...', 'G:\\\\sembakoantar...', 444, Array)
+#1 G:\\sembakoantar\\vendor\\composer\\ClassLoader.php(444): include()
+#2 G:\\sembakoantar\\vendor\\composer\\ClassLoader.php(322): Composer\\Autoload\\includeFile('G:\\\\sembakoantar...')
+#3 [internal function]: Composer\\Autoload\\ClassLoader->loadClass('UniSharp\\\\Larave...')
+#4 G:\\sembakoantar\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(690): spl_autoload_call('UniSharp\\\\Larave...')
+#5 G:\\sembakoantar\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(624): Illuminate\\Foundation\\Application->resolveProvider('UniSharp\\\\Larave...')
+#6 G:\\sembakoantar\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\ProviderRepository.php(75): Illuminate\\Foundation\\Application->register('UniSharp\\\\Larave...')
+#7 G:\\sembakoantar\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(604): Illuminate\\Foundation\\ProviderRepository->load(Array)
+#8 G:\\sembakoantar\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\RegisterProviders.php(17): Illuminate\\Foundation\\Application->registerConfiguredProviders()
+#9 G:\\sembakoantar\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(230): Illuminate\\Foundation\\Bootstrap\\RegisterProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#10 G:\\sembakoantar\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(310): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#11 G:\\sembakoantar\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#12 G:\\sembakoantar\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#13 {main}
+"} 
