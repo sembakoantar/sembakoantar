@@ -24,9 +24,10 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Code</th>
-                                        <th>Name</th>
-                                        <th>Status</th>
+                                        <th>Kode</th>
+                                        <th>Nama</th>
+                                        <th>Pembayaran</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -45,10 +46,33 @@
                                                 {{$item->name}}
                                             </td>
                                             <td>
-                                                {{$item->payment}}
+                                                @php
+                                                    if($item->payment == 0){
+                                                @endphp
+                                                        belum
+                                                @php
+                                                    }
+                                                    else{
+                                                @endphp
+                                                        sudah
+                                                @php
+                                                    }
+                                                @endphp
                                             </td>
-                                            <td>   
-                                                <a href="{{ route('product.edit',$item->id) }}" class="btn btn-primary btn-xs">Edit</a>
+                                            <td>
+                                                @php
+                                                    if($item->payment == 0){
+                                                @endphp
+                                                        <a href="{{ url('admin/transaction/'.$item->code.'/'.$item->payment) }}" class="btn btn-danger btn-xs">Belum</a>
+                                                @php
+                                                    }
+                                                    else{
+                                                @endphp
+                                                        <a href="{{ url('admin/transaction/'.$item->code.'/'.$item->payment) }}" class="btn btn-primary btn-xs">Sudah</a>
+                                                @php    
+                                                    }
+                                                @endphp
+                                                <a href="{{ url('admin/transaction/'.$item->code) }}" class="btn btn-primary btn-xs">Detail</a>
                                             </td>
                                         </tr>
                                     @endforeach
