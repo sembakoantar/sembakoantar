@@ -2,3 +2,4 @@
 *.log
 vendor/unisharp/laravel-filemanager/
 node_modules/.bin/acorn
+storage/logs/laravel.log

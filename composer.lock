@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a62618252223dd31cec578adb9799344",
+    "content-hash": "5a0797a24b587a79c9f41719a55f9134",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4614,16 +4614,16 @@
         },
         {
             "name": "unisharp/laravel-filemanager",
-            "version": "dev-master",
+            "version": "v2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/UniSharp/laravel-filemanager.git",
-                "reference": "582b6ee5db851a1ddeff8085dcb56e17218dbf10"
+                "reference": "34202590a88ecfc598c6dc70dae8b306710d4df2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/UniSharp/laravel-filemanager/zipball/582b6ee5db851a1ddeff8085dcb56e17218dbf10",
-                "reference": "582b6ee5db851a1ddeff8085dcb56e17218dbf10",
+                "url": "https://api.github.com/repos/UniSharp/laravel-filemanager/zipball/34202590a88ecfc598c6dc70dae8b306710d4df2",
+                "reference": "34202590a88ecfc598c6dc70dae8b306710d4df2",
                 "shasum": ""
             },
             "require": {
@@ -4685,7 +4685,11 @@
                 "tinymce",
                 "upload"
             ],
-            "time": "2020-09-13T14:59:41+00:00"
+            "support": {
+                "issues": "https://github.com/UniSharp/laravel-filemanager/issues",
+                "source": "https://github.com/UniSharp/laravel-filemanager/tree/v2.2.0"
+            },
+            "time": "2020-11-16T10:51:46+00:00"
         },
         {
             "name": "uxweb/sweet-alert",
@@ -7296,14 +7300,12 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "unisharp/laravel-filemanager": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^7.3"
     },
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }
