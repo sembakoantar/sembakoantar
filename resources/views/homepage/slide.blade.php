@@ -8,9 +8,9 @@
                 <div class="item">
                   <div class="row">
                     <div class="col-md-5 text-right">
-                      <p><img src="img/logo.png" alt="" class="ml-auto"></p>
-                      <h1>Multipurpose responsive theme</h1>
-                      <p>Business. Corporate. Agency.<br>Portfolio. Blog. E-commerce.</p>
+                      <!-- <p><img src="img/logo.png" alt="" class="ml-auto"></p> -->
+                      <h1>Promo Template</h1>
+                      <!-- <p>Business. Corporate. Agency.<br>Portfolio. Blog. E-commerce.</p> -->
                     </div>
                     <div class="col-md-7"><img src="img/template-homepage.png" alt="" class="img-fluid"></div>
                   </div>
@@ -29,7 +29,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="item">
+                <!-- <div class="item">
                   <div class="row">
                     <div class="col-md-5 text-right">
                       <h1>Design</h1>
@@ -54,7 +54,7 @@
                       </ul>
                     </div>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>

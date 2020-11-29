@@ -3,13 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Product;
 class BerandaController extends Controller
 {
     public function index(){
-    	// $products = Product::all();
-    	return view('homepage');
-    	//echo "aus";
+        $produk = Product::take(12)->orderBy('id','DESC')->get();
+    	return view('homepage',compact('produk'));
     }
 
     public function detail()
