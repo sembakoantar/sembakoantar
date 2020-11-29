@@ -35,7 +35,7 @@ Route::prefix('admin')->group(function(){
     Route::resource('category',App\Http\Controllers\CategoryController::class);
     Route::resource('product',App\Http\Controllers\ProductController::class);
     Route::get('transaction',[App\Http\Controllers\TransactionController::class, 'index'])->name('admin.transaction');
-    Route::get('detail',[App\Http\Controllers\TransactionController::class, 'detail'])->name('transaction.detail');
+    //Route::get('detail',[App\Http\Controllers\TransactionController::class, 'detail'])->name('transaction.detail');
     Route::get('transaction/{code}/{status}',[App\Http\Controllers\TransactionController::class, 'status']);
     Route::get('transaction/{code}',[App\Http\Controllers\TransactionController::class, 'detail']);
 });

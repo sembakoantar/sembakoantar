@@ -17,11 +17,9 @@ class TransactionController extends Controller
     }
 
     public function detail($code){
-        $id = Transaction::where('code',$code)->pluck('id')->toArray();
-        $detail = Transaction::find($id)->all();
-        $product = Product::find($detail[0]['product_id'])->name;
-        $category = Category::find($detail[0]['category_id'])->name;
-        return view('admin.transaction.detail',compact('detail','product','category'));
+        $penerima = Transaction::groupBy('code')->orderBy('id','DESC')->where('code',$code)->first();
+        $detail = Transaction::orderBy('id','DESC')->where('code',$code)->get();
+        return view('admin.transaction.detail',compact('penerima','detail'));
     }
 
     public function status($code, $status){

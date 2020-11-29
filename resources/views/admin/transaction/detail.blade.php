@@ -21,112 +21,116 @@
                     <!-- /.card-header -->
                     <!-- form start -->
                     
-                    <form role="form" action="" method="">
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label>Kode</label>
-                                <input type="text" class="form-control" name="Kode" value="{{ $detail[0]['code'] }}">
+                    
+                    <!-- Main content -->
+                    <div class="invoice p-3 mb-3">
+                    <!-- title row -->
+                        <!-- info row -->
+                        <div class="row invoice-info">
+                            <div class="col-sm-4 invoice-col">
+                            <h3>Penerima</h3>
+                                <b>Nama: </b>{{ ucfirst($penerima->name) }}<br>
+                                <b>Alamat: </b>{{ ucfirst($penerima->address) }}<br>
+                                <b>Kode: </b>{{ ucfirst($penerima->code) }}
                             </div>
-                            <div class="form-group">
-                                <label>Produk</label>
-                                <input type="text" class="form-control" name="Product" value="{{ $product }}">
+                            <!-- /.col -->
+                            <div class="col-sm-4 invoice-col">
+                            <!-- To
+                            <address>
+                                <strong>John Doe</strong><br>
+                                795 Folsom Ave, Suite 600<br>
+                                San Francisco, CA 94107<br>
+                                Phone: (555) 539-1037<br>
+                                Email: john.doe@example.com
+                            </address> -->
                             </div>
-                            <div class="form-group">
-                                <label>Category</label>
-                                <input type="text" class="form-control" name="Category" value="{{ $category }}">
+                            <!-- /.col -->
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+                        <br>
+                        <!-- Table row -->
+                        <div class="row">
+                            <div class="col-12 table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                <th>Qty</th>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Subtotal</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php $st = 0; ?>
+                                @foreach($detail as $d)
+                                    <tr>
+                                        <td>{{ $d->qty }}</td>
+                                        <td>{{ $d->product->name }}</td>
+                                        <td>{{ $d->product->price }}</td>
+                                        <td>{{ number_format($d->subtotal,2,",",".") }}</td>
+                                        <?php $st += $d->subtotal; ?>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
                             </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
 
-                            <div class="form-group">
-                                <label>Jumlah</label>
-                                <input type="text" class="form-control" name="Jumlah" value="{{ $detail[0]['qty'] }}">
+                        <div class="row">
+                            
+                            <div class="col-6">
+
+                                <div class="table-responsive">
+                                    <table class="table">
+                                    <tr>
+                                        <th style="width:50%">Subtotal:</th>
+                                        <td>{{ number_format($st,2,",",".") }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Shipping:</th>
+                                        <td>{{ number_format(20000,2,",",".") }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Total:</th>
+                                        <td><?php echo number_format($st+20000,2,",",".") ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Status Pembayaran:</th>
+                                        <td><?php if($penerima->payment == 1){echo "sudah";}
+                                        else{echo "belum";} ?> terbayar</td>
+                                    </tr>
+                                    </table>
+                                </div>
+                                <a href="{{ route('admin.transaction') }}"><button type="button" class="btn btn-primary">
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-backspace-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M15.683 3a2 2 0 0 0-2-2h-7.08a2 2 0 0 0-1.519.698L.241 7.35a1 1 0 0 0 0 1.302l4.843 5.65A2 2 0 0 0 6.603 15h7.08a2 2 0 0 0 2-2V3zM5.829 5.854a.5.5 0 1 1 .707-.708l2.147 2.147 2.146-2.147a.5.5 0 1 1 .707.708L9.39 8l2.146 2.146a.5.5 0 0 1-.707.708L8.683 8.707l-2.147 2.147a.5.5 0 0 1-.707-.708L7.976 8 5.829 5.854z"/>
+                                    </svg> Back
+                                </button></a>
                             </div>
-                            <div class="form-group">
-                                <label>Subtotal</label>
-                                <input type="text" class="form-control" name="Subtotal" value="{{ $detail[0]['subtotal'] }}">
-                            </div>
-                            <div class="form-group">
-                                <label>Nama</label>
-                                <input type="text" class="form-control" name="Nama" value="{{ $detail[0]['name'] }}">
-                            </div>
-                            <div class="form-group">
-                                <label>Alamat</label>
-                                <input type="text" class="form-control" name="Alamat" value="{{ $detail[0]['address'] }}">
-                            </div>
-                            <div class="form-group">
-                                <label>Kode Pos</label>
-                                <input type="text" class="form-control" name="KodePos" value="{{ $detail[0]['postal_code'] }}">
-                            </div>
-                            <div class="form-group">
-                                <label>Kurir</label>
-                                <input type="text" class="form-control" name="Kurir" value="{{ $detail[0]['kurir'] }}">
-                            </div>
-                            <div class="form-group">
-                                <label>Status Pembayaran</label>
-                                @php
-                                    if($detail[0]['payment'] == 0){
-                                @endphp
-                                        <input type="text" class="form-control" name="Status" value="Belum Terbayar">
-                                @php
-                                    }
-                                    else{
-                                @endphp
-                                        <input type="text" class="form-control" name="Status" value="Sudah Terbayar">
-                                @php
-                                    }
-                                @endphp
-                            </div>
+                            
+                            <!-- /.col -->
                         </div>
-                    </form>
-                    <!-- Table row -->
-                    <div class="row">
-                        <div class="col-12 table-responsive">
-                        <table class="table table-striped">
-                            <thead>
-                            <tr>
-                            <th>Qty</th>
-                            <th>Product</th>
-                            <th>Serial #</th>
-                            <th>Description</th>
-                            <th>Subtotal</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                            <td>1</td>
-                            <td>Call of Duty</td>
-                            <td>455-981-221</td>
-                            <td>El snort testosterone trophy driving gloves handsome</td>
-                            <td>$64.50</td>
-                            </tr>
-                            <tr>
-                            <td>1</td>
-                            <td>Need for Speed IV</td>
-                            <td>247-925-726</td>
-                            <td>Wes Anderson umami biodiesel</td>
-                            <td>$50.00</td>
-                            </tr>
-                            <tr>
-                            <td>1</td>
-                            <td>Monsters DVD</td>
-                            <td>735-845-642</td>
-                            <td>Terry Richardson helvetica tousled street art master</td>
-                            <td>$10.70</td>
-                            </tr>
-                            <tr>
-                            <td>1</td>
-                            <td>Grown Ups Blue Ray</td>
-                            <td>422-568-642</td>
-                            <td>Tousled lomo letterpress</td>
-                            <td>$25.99</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        </div>
-                        <!-- /.col -->
+                        
+                        <!-- this row will not appear when printing -->
+                        <!-- <div class="row no-print">
+                            <div class="col-12">
+                            <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
+                            <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
+                                Payment
+                            </button>
+                            <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
+                                <i class="fas fa-download"></i> Generate PDF
+                            </button>
+                            </div>
+                        </div> -->
                     </div>
-                    <!-- /.row -->
-                    <!-- /.card -->
+                    
+                    <!-- /.invoice -->
                 </div>
+                
             </div>
             
         </div>
